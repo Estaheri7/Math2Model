@@ -1,3 +1,4 @@
 .vscode
+datasets
 lab/torch/data
 lab/torch/models

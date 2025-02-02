@@ -53,7 +53,3 @@ The model is evaluated using the Dice coefficient, which measures the overlap be
 ## Results
 
 The training and validation results, including loss and Dice coefficient, are plotted for analysis. The model's performance on the test dataset is also displayed.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
