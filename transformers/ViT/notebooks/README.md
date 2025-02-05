@@ -1,7 +1,7 @@
 
 This notebook demonstrates the implementation of a Vision Transformer (ViT) from scratch using PyTorch. The Vision Transformer is a model for image classification that leverages the Transformer architecture, which has been highly successful in natural language processing tasks.
 
-![Vision Transformer](ViT_Image_paper.png)
+![Vision Transformer](.\ViT_Image_paper.png)
 
 For more details, refer to the [Vision Transformer paper](https://arxiv.org/abs/2010.11929).
 
