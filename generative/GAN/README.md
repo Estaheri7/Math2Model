@@ -1,27 +1,36 @@
-# Generative Adversarial Network (GAN)
+# Generative Adversarial Network (GAN) from Scratch
 
-This repository contains an implementation of a Generative Adversarial Network (GAN) using PyTorch. The GAN is trained on the MNIST dataset to generate handwritten digits.
+This repository contains an implementation of a Generative Adversarial Network (GAN) using PyTorch. The GAN is trained on the CIFAR-10 dataset to generate realistic images.
 
-## How It Works
+## Files
 
-The GAN consists of two neural networks: a Generator and a Discriminator. The Generator creates fake images from random noise, while the Discriminator tries to distinguish between real and fake images. The two networks are trained simultaneously in a game-theoretic framework.
+- `GAN.ipynb`: Jupyter notebook containing the implementation and training of the GAN.
+- `README.md`: This file.
+
+## Model Architecture
 
 ### Generator
 
-The Generator takes a random noise vector as input and transforms it into an image through a series of transposed convolutional layers. The architecture is defined as follows:
+The generator takes a random noise vector as input and generates an image. It consists of several transposed convolutional layers with batch normalization and ReLU activation functions.
 
 ```python
 class Generator(nn.Module):
     def __init__(self, latent_dim=100, n_channels=1, img_s=28):
         super().__init__()
         self.generator = nn.Sequential(
-            nn.ConvTranspose2d(latent_dim, img_s * 4, kernel_size=7, bias=False),
+            nn.ConvTranspose2d(latent_dim, img_s * 8, kernel_size=4, stride=1, padding=0, bias=False),
+            nn.BatchNorm2d(img_s * 8),
+            nn.ReLU(inplace=True),
+            
+            nn.ConvTranspose2d(img_s * 8, img_s * 4, kernel_size=4, stride=2, padding=0, bias=False),
             nn.BatchNorm2d(img_s * 4),
             nn.ReLU(inplace=True),
-            nn.ConvTranspose2d(img_s * 4, img_s * 2, kernel_size=2, stride=2),
+
+            nn.ConvTranspose2d(img_s * 4, img_s * 2, kernel_size=4, stride=2, padding=2, bias=False),
             nn.BatchNorm2d(img_s * 2),
             nn.ReLU(inplace=True),
-            nn.ConvTranspose2d(img_s * 2, n_channels, kernel_size=2, stride=2),
+
+            nn.ConvTranspose2d(img_s * 2, n_channels, kernel_size=2, stride=2, padding=2),
             nn.Tanh()
         )
 
@@ -31,22 +40,25 @@ class Generator(nn.Module):
 
 ### Discriminator
 
-The Discriminator takes an image as input and outputs a probability indicating whether the image is real or fake. It uses a series of convolutional layers to extract features from the image. The architecture is defined as follows:
+The discriminator takes an image as input and outputs a probability indicating whether the image is real or fake. It consists of several convolutional layers with batch normalization and LeakyReLU activation functions.
 
 ```python
 class Discriminator(nn.Module):
     def __init__(self, n_channels=1, img_s=28):
         super().__init__()
         self.discriminator = nn.Sequential(
-            nn.Conv2d(n_channels, img_s * 2, kernel_size=2, stride=2, bias=False),
+            nn.Conv2d(n_channels, img_s * 2, kernel_size=4, stride=2, padding=1, bias=False),
             nn.LeakyReLU(0.2, inplace=True),
-            nn.Conv2d(img_s * 2, img_s * 4, kernel_size=2, stride=2, bias=False),
+            
+            nn.Conv2d(img_s * 2, img_s * 4, kernel_size=4, stride=2, padding=1, bias=False),
             nn.BatchNorm2d(img_s * 4),
             nn.LeakyReLU(0.2, inplace=True),
-            nn.Conv2d(img_s * 4, img_s * 8, kernel_size=2, stride=2, bias=2),
+            
+            nn.Conv2d(img_s * 4, img_s * 8, kernel_size=4, stride=2, padding=1, bias=False),
             nn.BatchNorm2d(img_s * 8),
             nn.LeakyReLU(0.2, inplace=True),
-            nn.Conv2d(img_s * 8, 1, kernel_size=3, stride=1, bias=False),
+            
+            nn.Conv2d(img_s * 8, 1, kernel_size=4, stride=1, padding=0, bias=False),
             nn.Sigmoid()
         )
 
@@ -54,25 +66,14 @@ class Discriminator(nn.Module):
         return self.discriminator(x)
 ```
 
-## Loss Functions
+## Training
 
-The loss functions for the Generator and Discriminator are based on binary cross-entropy loss. The Discriminator's loss is the sum of the losses for real and fake images, while the Generator's loss is based on how well it can fool the Discriminator.
+The GAN is trained using the Binary Cross Entropy Loss function. The training process involves alternating between training the discriminator and the generator. The discriminator is trained to distinguish between real and fake images, while the generator is trained to produce images that are classified as real by the discriminator.
 
-### Discriminator Loss
+## Results
 
-```python
-D_error_real: Tensor = loss_fn(D_output, labels)
-D_error_fake: Tensor = loss_fn(D_output, labels)
-D_error = D_error_real + D_error_fake
-```
+The notebook visualizes the training images, the loss curves for the generator and discriminator, and an animation of the generated images over the training epochs.
 
-### Generator Loss
+## Saving and Loading Models
 
-```python
-G_error: Tensor = loss_fn(D_output, labels)
-```
-
-## References
-
-- The original GAN paper: [Generative Adversarial Nets](https://arxiv.org/abs/1406.2661)
-- PyTorch documentation: [PyTorch](https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html#)
+The trained generator and discriminator models are saved as `generator.pth` and `discriminator.pth` respectively.
