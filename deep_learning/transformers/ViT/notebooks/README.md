@@ -34,9 +34,12 @@ The `Patcher` class is responsible for dividing the input image into smaller pat
 
 The `LinearProjectionFlatten` class takes the patches created by the `Patcher` and projects them into a higher-dimensional space using a linear layer.
 
-### PositionalEncoder
+### CLSAdder
 
-The `PositionalEncoder` class adds positional information to the patches, which helps the model understand the order of the patches.
+The `CLSAdder` class is responsible for:
+
+1. **Adding a `[CLS]` token** to the beginning of the sequence of patch embeddings.
+2. **Adding positional embeddings** to retain spatial information.
 
 ### SelfAttention
 
