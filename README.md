@@ -40,6 +40,7 @@ In this section, you will find notebooks for each specific vision model.
 
 4. **Transformers**
     - [Vision Transformer](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/transformers/ViT/notebooks) (ViT)
+    - [Swin Transformer](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/transformers/swin_transformer)
 
 5. **Generative Models**
     - [Variational Autoencoder](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/generative/VAE) (VAE)
