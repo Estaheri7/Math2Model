@@ -35,19 +35,22 @@ In this section, you will find notebooks for each specific vision model.
     - [Autoencoder](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/auto_encoders)
     - [Variational Autoencoder](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/generative/VAE) (VAE)
 
-3. **Object Detection Models**
+3. **Differential Equation-based Models**
+    - [Latent ODE-VAE](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/generative/latent_ODE_VAE)
+
+4. **Object Detection Models**
     - [Faster R-CNN](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/object_detection/voc_detection)
 
-4. **Transformers**
+5. **Transformers**
     - [Vision Transformer](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/transformers/ViT/notebooks) (ViT)
     - [Swin Transformer](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/transformers/swin_transformer)
 
-5. **Generative Models**
+6. **Generative Models**
     - [Variational Autoencoder](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/generative/VAE) (VAE)
     - [Generative Adversarial Network](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/generative/GAN) (GAN)
     - [Diffusion Models](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/generative/diffusion)
 
-6. **Self-Supervised Models**
+7. **Self-Supervised Models**
     - [CLIP](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/self_supervised/CLIP) (Contrastive Language–Image Pretraining)
 
 ---
