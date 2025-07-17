@@ -53,6 +53,9 @@ In this section, you will find notebooks for each specific vision model.
 7. **Self-Supervised Models**
     - [CLIP](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/self_supervised/CLIP) (Contrastive Language–Image Pretraining)
 
+8. **State Space Models**
+    - [Vision Mamba](https://github.com/Estaheri7/Math2Model/tree/main/deep_learning/state_space_models/vision_mamba) (Vim)
+
 ---
 
 ## 🤝 Contributing
